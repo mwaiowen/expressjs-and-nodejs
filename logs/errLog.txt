@@ -1,3 +1,7 @@
 20240325	16:51:17	4dafca37-2050-4fa0-bd4e-b69b98c34341	TypeError :req.json is not a function
 20240325	16:52:17	b1d4d3d3-de97-4b10-bd7d-20a9426d9ad9	TypeError :req.json is not a function
 20240325	16:52:47	7bc032d1-d5b5-4364-b801-6d5696e66743	TypeError :req.json is not a function
+20240326	10:10:35	de8a4582-08f6-4f70-9237-65ae0b02c46c	Error :ENOENT: no such file or directory, stat 'C:\Users\Bahari Digital\Downloads\nodejs_web_server-main\views\index.html'
+20240326	10:20:22	52903e97-22e6-486a-9de2-8dd44fa66b3b	TypeError :Cannot read properties of undefined (reading 'id')
+20240326	16:33:45	b0102ad8-be3f-4e35-8843-86efc6c8932e	Error :ENOENT: no such file or directory, stat 'C:\Users\Bahari Digital\Downloads\nodejs_web_server-main\views\index.html'
+20240326	16:33:46	9c77509c-679c-4553-8a33-c81193e9e142	Error :ENOENT: no such file or directory, stat 'C:\Users\Bahari Digital\Downloads\nodejs_web_server-main\views\index.html'
