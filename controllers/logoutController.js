@@ -1,37 +1,23 @@
-const usersDB = {
-  users: require("../model/users.js"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require("../model/User");
 
 const handleLogout = async (req, res) => {
   //on client, also delete the accessToken
 
   const cookies = req.cookies;
-  if (!cookies?.jwt) return res.sendStatus(204); //successful but no content
+  if (!cookies?.jwt) return res.sendStatus(204); //successful but no content hence error code 204
   const refreshToken = cookies.jwt;
 
   //is refreshToken in db
-  const foundUser = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const foundUser = await User.findOne({ refreshToken }).exec();
   if (!foundUser) {
     res.clearCookie("jwt", { httpOnly: true });
     return res.sendStatus(204);
   }
   //delete the refreshToken in the db
-  const otherUsers = usersDB.users.filter(
-    (person) => person.refreshToken !== foundUser.refreshToken
-  );
-  const currentUser = { ...foundUser, refreshToken: "" };
-  usersDB.setUsers([...otherUsers, currentUser]);
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "model", "users.js"),
-    JSON.stringify(usersDB.users)
-  );
+  foundUser.refreshToken = "";
+  const result = await foundUser.save();
+  console.log(results);
+
   res.clearCookies("jwt", { httpOnly: true });
   res.sendStatus(204);
 };
